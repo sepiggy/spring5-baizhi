@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="c" class="com.baizhiedu.beanpost.Categroy">
+        <property name="id" value="10"/>
+        <property name="name" value="xiaojr"/>
+    </bean>
+
+    <bean id="section" name="s1,s2" class="com.baizhiedu.sepiggy.entity.Section"></bean>
+
+    <bean id="person" name="p,p1" class="com.baizhiedu.sepiggy.entity.Person">
+        <property name="id">
+            <value>10</value>
+        </property>
+        <property name="name">
+            <value>sepiggy</value>
+        </property>
+    </bean>
+
+</beans>

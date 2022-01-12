@@ -84,15 +84,17 @@
         </property>
     </bean>-->
 
+    <!--    通过属性简化配置-->
     <!-- <bean id="userService" class="com.baizhiedu.basic.UserServiceImpl">
           <property name="userDAO" ref="userDAO"/>
      </bean>-->
 
 
+    <!--    通过命名空间简化配置-->
+
     <bean id="person" class="com.baizhiedu.basic.Person" p:name="xiaojr" p:id="100"/>
 
     <bean id="userService" class="com.baizhiedu.basic.UserServiceImpl" p:userDAO-ref="userDAO"></bean>
-
 
     <bean id="customer" class="com.baizhiedu.basic.constructer.Customer">
         <constructor-arg type="int">
@@ -100,42 +102,40 @@
         </constructor-arg>
     </bean>
 
-<!--
-        <bean id="conn" class="com.baizhiedu.factorybean.ConnectionFactoryBean">
-            <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-            <property name="url" value="jdbc:mysql://localhost:3306/suns?useSSL=false"/>
-            <property name="username" value="root"/>
-            <property name="password" value="123456"/>
-        </bean>
-    -->
+    <bean id="customer1" class="com.baizhiedu.basic.constructer.Customer">
+        <constructor-arg type="String">
+            <value>sepiggy</value>
+        </constructor-arg>
+        <constructor-arg type="int">
+            <value>18</value>
+        </constructor-arg>
+    </bean>
+
+    <!--    实例工厂-->
+    <!--
+            <bean id="conn" class="com.baizhiedu.factorybean.ConnectionFactoryBean">
+                <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql://localhost:3306/suns?useSSL=false"/>
+                <property name="username" value="root"/>
+                <property name="password" value="123456"/>
+            </bean>
+        -->
 
     <!-- <bean id="connFactory" class="com.baizhiedu.factorybean.ConnectionFactory"></bean>
 
      <bean id="conn"  factory-bean="connFactory" factory-method="getConnection"/>
 -->
-    <bean id="conn" class="com.baizhiedu.factorybean.StaticConnectionFactory" factory-method="getConnection"/>
 
+
+    <!--    静态工厂-->
+    <bean id="conn" class="com.baizhiedu.factorybean.StaticConnectionFactory" factory-method="getConnection"/>
 
     <bean id="account" class="com.baizhiedu.scope.Account"/>
 
-    <bean id="product" scope="prototype" class="com.baizhiedu.life.Product" init-method="myInit" destroy-method="myDestroy" >
-          <property name="name" value="suns"/>
+    <bean id="product" scope="prototype" class="com.baizhiedu.life.Product" init-method="myInit"
+          destroy-method="myDestroy">
+        <property name="name" value="suns"/>
     </bean>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 </beans>

@@ -5,9 +5,11 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 /*
+     // 实例工厂
      ConnectionFactory cf = new ConnectionFactory();
      cf.getConnection();
 
+     // 静态工厂
      staticConnectionFactory.getConnection();
  */
 

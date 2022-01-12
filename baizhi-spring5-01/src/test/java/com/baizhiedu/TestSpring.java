@@ -218,6 +218,8 @@ public class TestSpring {
         ApplicationContext ctx = new ClassPathXmlApplicationContext("/applicationContext.xml");
         Customer customer = (Customer) ctx.getBean("customer");
         System.out.println("customer = " + customer);
+        Customer customer1 = ctx.getBean("customer1", Customer.class);
+        System.out.println("customer1 = " + customer1);
     }
 
     /**
