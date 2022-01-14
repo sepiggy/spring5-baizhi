@@ -126,16 +126,16 @@
      <bean id="conn"  factory-bean="connFactory" factory-method="getConnection"/>
 -->
 
-
     <!--    静态工厂-->
     <bean id="conn" class="com.baizhiedu.factorybean.StaticConnectionFactory" factory-method="getConnection"/>
 
     <bean id="account" class="com.baizhiedu.scope.Account"/>
 
-    <bean id="product" scope="prototype" class="com.baizhiedu.life.Product" init-method="myInit"
+<!--    <bean id="product1" scope="singleton"  lazy-init="false" class="com.baizhiedu.life.Product"/>-->
+
+    <bean id="product2" scope="prototype" class="com.baizhiedu.life.Product" init-method="myInit"
           destroy-method="myDestroy">
         <property name="name" value="suns"/>
     </bean>
-
 
 </beans>

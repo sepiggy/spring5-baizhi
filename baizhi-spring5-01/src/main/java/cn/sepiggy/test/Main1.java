@@ -1,7 +1,6 @@
-package com.baizhiedu.sepiggy.test;
+package cn.sepiggy.test;
 
-import com.baizhiedu.sepiggy.entity.Person;
-import com.baizhiedu.sepiggy.entity.Section;
+import cn.sepiggy.entity.Person;
 import lombok.val;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -22,10 +21,8 @@ public class Main1 {
         val b2 = classPathXmlApplicationContext.containsBeanDefinition("s2");
         System.out.println("b2 = " + b2);
 */
-
         val person = classPathXmlApplicationContext.getBean("person", Person.class);
         System.out.println("person = " + person);
-
     }
 
 }

@@ -1,4 +1,4 @@
-package com.baizhiedu.sepiggy.entity;
+package cn.sepiggy.entity;
 
 public class Person {
 

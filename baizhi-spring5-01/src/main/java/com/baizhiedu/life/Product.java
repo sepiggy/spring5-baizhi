@@ -4,6 +4,7 @@ import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
 
 public class Product implements InitializingBean, DisposableBean {
+
     private String name;
 
     public String getName() {
@@ -19,7 +20,7 @@ public class Product implements InitializingBean, DisposableBean {
         System.out.println("Product.Product");
     }
 
-    //这个就是初始化方法：做一些初始化操作
+    // 这个就是初始化方法：做一些初始化操作
     // Spring会进行调用
     @Override
     public void afterPropertiesSet() throws Exception {
@@ -36,7 +37,7 @@ public class Product implements InitializingBean, DisposableBean {
         System.out.println("Product.destroy");
     }
 
-    public void myDestroy()throws Exception{
+    public void myDestroy() throws Exception {
         System.out.println("Product.myDestroy");
     }
 }
