@@ -1,15 +1,10 @@
-package com.baizhiedu.proxy.a;
-
-import com.baizhiedu.Log;
-import com.baizhiedu.proxy.User;
+package cn.sepiggy.proxy.v2_dynamicproxy_spring;
 
 public class UserServiceImpl implements UserService {
 
-    @Log
     @Override
     public void register(User user) {
-        System.out.println("UserServiceImpl.register 业务运算 + DAO ");
-        //throw new RuntimeException("测试异常");
+        System.out.println("UserServiceImpl.register");
     }
 
     @Override
@@ -17,4 +12,5 @@ public class UserServiceImpl implements UserService {
         System.out.println("UserServiceImpl.login");
         return true;
     }
+
 }

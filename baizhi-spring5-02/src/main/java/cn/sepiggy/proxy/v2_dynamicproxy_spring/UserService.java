@@ -1,6 +1,4 @@
-package com.baizhiedu.proxy.a;
-
-import com.baizhiedu.proxy.User;
+package cn.sepiggy.proxy.v2_dynamicproxy_spring;
 
 public interface UserService {
 

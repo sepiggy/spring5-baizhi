@@ -1,6 +1,4 @@
-package com.baizhiedu.proxy.a;
-
-import com.baizhiedu.proxy.User;
+package cn.sepiggy.proxy.v1_staticproxy;
 
 public interface UserService {
 
