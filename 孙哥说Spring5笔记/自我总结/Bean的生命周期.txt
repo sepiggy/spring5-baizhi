@@ -1,0 +1,12 @@
+Spring 从读取配置文件到用户获取 Bean 的完整流程：
+1. Spring 加载配置文件
+2. Spring 调用类的无参构造器（简单对象）或 FactoryBean接口、实例工厂、静态工厂（复杂对象）创建对象
+3. Spring 进行依赖注入（通过 set 注入或有参构造器注入）
+4. Spring 调用 BeanPostProcessor#postProcessBeforeInitialization
+5. Spring 调用 InitializingBean#afterPropertiesSet
+6. Spring 调用用户自定义的初始化方法（通过配置文件中 init-method 属性指定）
+7. Spring 调用 BeanPostProcessor#postProcessAfterInitialization
+8. 用户通过 ApplicationContext#getBean 获取 Bean
+9. Spring 调用 DisposableBean#destroy (销毁方法只在 scope="singleton" 的情况下生效)
+10. 调用用户自定义的销毁方法 （通过配置文件中 destroy-method 属性指定）(销毁方法只在 scope="singleton" 的情况下生效)
+11. Spring 调用 ApplicationContext#close 关闭容器

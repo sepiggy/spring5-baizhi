@@ -3,11 +3,6 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="c" class="com.baizhiedu.beanpost.Categroy">
-        <property name="id" value="10"/>
-        <property name="name" value="xiaojr"/>
-    </bean>
-
     <bean id="section" name="s1,s2" class="cn.sepiggy.entity.Section"></bean>
 
     <bean id="person" name="p,p1" class="cn.sepiggy.entity.Person">
@@ -21,7 +16,36 @@
 
     <bean id="person1" class="cn.sepiggy.entity.Person1">
         <property name="name" value="sepiggy"/>
+        <!--        <property name="birthday" value="2022/01/14"/>-->
         <property name="birthday" value="2022-01-14"/>
     </bean>
+
+    <!-- 自定义类型转换器 -->
+    <bean id="myDateConverter" class="cn.sepiggy.converter.MyDateConverter">
+        <property name="pattern">
+            <value>yyyy-MM-dd</value>
+        </property>
+    </bean>
+
+    <!-- 类型转换器注册-->
+    <bean id="conversionService" class="org.springframework.context.support.ConversionServiceFactoryBean">
+        <property name="converters">
+            <set>
+                <ref bean="myDateConverter"/>
+            </set>
+        </property>
+    </bean>
+
+    <bean id="c" class="cn.sepiggy.beanpost.Category">
+        <property name="id" value="10"/>
+        <property name="name" value="sepiggy"/>
+    </bean>
+
+    <bean id="b" class="cn.sepiggy.beanpost.Book">
+        <property name="id" value="1024"/>
+        <property name="name" value="悲惨世界"/>
+    </bean>
+
+    <bean id="myBeanPostProcessor" class="cn.sepiggy.beanpost.MyBeanPostProcessor"/>
 
 </beans>
