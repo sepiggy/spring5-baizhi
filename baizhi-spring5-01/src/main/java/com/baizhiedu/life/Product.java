@@ -3,6 +3,7 @@ package com.baizhiedu.life;
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
 
+
 public class Product implements InitializingBean, DisposableBean {
 
     private String name;

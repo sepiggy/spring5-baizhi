@@ -133,7 +133,9 @@
 
 <!--    <bean id="product1" scope="singleton"  lazy-init="false" class="com.baizhiedu.life.Product"/>-->
 
-    <bean id="product2" scope="prototype" class="com.baizhiedu.life.Product" init-method="myInit"
+    <bean id="product2" scope="prototype" class="com.baizhiedu.life.Product" init-method="myInit"/>
+
+    <bean id="product" scope="singleton" class="com.baizhiedu.life.Product" init-method="myInit"
           destroy-method="myDestroy">
         <property name="name" value="suns"/>
     </bean>
