@@ -4,6 +4,7 @@ import org.springframework.aop.MethodBeforeAdvice;
 
 import java.lang.reflect.Method;
 
+// MethodBeforeAdvice -> 运行在原始方法执行之前
 public class BeforeAdvice implements MethodBeforeAdvice {
 
     /*

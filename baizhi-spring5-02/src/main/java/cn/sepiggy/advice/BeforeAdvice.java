@@ -1,10 +1,10 @@
-package com.baizhiedu.dynamic;
+package cn.sepiggy.advice;
 
 import org.springframework.aop.MethodBeforeAdvice;
 
 import java.lang.reflect.Method;
 
-public class Before1 implements MethodBeforeAdvice {
+public class BeforeAdvice implements MethodBeforeAdvice {
 
     /*
       作用：需要把运行在原始方法执行之前运行的额外功能，书写在 before 方法中
@@ -25,6 +25,7 @@ public class Before1 implements MethodBeforeAdvice {
      */
     @Override
     public void before(Method method, Object[] args, Object target) throws Throwable {
-        System.out.println("-----new method before advice log------");
+        System.out.println("BeforeAdvice.before");
     }
+
 }

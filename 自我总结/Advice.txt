@@ -1,0 +1,6 @@
+1. MethodBeforeAdvice 运行在原始方法之前
+
+2. MethodInterceptor
+1) 可以运行在原始方法"之前"，"之后"和"抛出异常时"三个时机，并且可以随意组合使用
+2) MethodInterceptor 可以改变原始方法的返回值
+3) MethodInterceptor 比 MethodBeforeAdvice 使用起来更加灵活方便推荐在生产实践中使用
