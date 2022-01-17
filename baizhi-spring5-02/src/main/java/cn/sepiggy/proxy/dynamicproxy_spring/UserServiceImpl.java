@@ -1,8 +1,7 @@
-package cn.sepiggy.pointcut;
+package cn.sepiggy.proxy.dynamicproxy_spring;
 
 public class UserServiceImpl implements UserService {
 
-    @Log
     @Override
     public void register(User user) {
         System.out.println("UserServiceImpl.register");
@@ -13,4 +12,5 @@ public class UserServiceImpl implements UserService {
         System.out.println("UserServiceImpl.login");
         return true;
     }
+
 }

@@ -1,4 +1,4 @@
-package cn.sepiggy.proxy.v1_staticproxy;
+package cn.sepiggy.proxy.dynamicproxy_spring;
 
 public class OrderServiceImpl implements OrderService {
 

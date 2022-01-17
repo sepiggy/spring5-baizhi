@@ -6,11 +6,11 @@
                            http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd">
 
 
-    <bean id="userService" class="cn.sepiggy.proxy.v2_dynamicproxy_spring.UserServiceImpl"/>
+    <bean id="userService" class="cn.sepiggy.proxy.dynamicproxy_spring.UserServiceImpl"/>
 
-    <bean id="orderService" class="cn.sepiggy.proxy.v2_dynamicproxy_spring.OrderServiceImpl"/>
+    <bean id="orderService" class="cn.sepiggy.proxy.dynamicproxy_spring.OrderServiceImpl"/>
 
-    <bean id="before" class="cn.sepiggy.proxy.v2_dynamicproxy_spring.BeforeAdvice"/>
+    <bean id="before" class="cn.sepiggy.proxy.dynamicproxy_spring.BeforeAdvice"/>
 
     <aop:config>
         <!-- 所有的方法都作为切入点, 加入额外功能 -->

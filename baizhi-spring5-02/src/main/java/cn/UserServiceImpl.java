@@ -1,6 +1,9 @@
-package cn.sepiggy.proxy.v1_staticproxy;
+package cn;
 
-public class UserServiceImpl implements UserService{
+import cn.sepiggy.pointcut.User;
+import cn.sepiggy.pointcut.UserService;
+
+public class UserServiceImpl implements UserService {
 
     @Override
     public void register(User user) {
@@ -12,5 +15,4 @@ public class UserServiceImpl implements UserService{
         System.out.println("UserServiceImpl.login");
         return true;
     }
-
 }

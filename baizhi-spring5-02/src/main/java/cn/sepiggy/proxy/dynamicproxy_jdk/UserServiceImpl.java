@@ -1,4 +1,4 @@
-package cn.sepiggy.proxy.v2_dynamicproxy_spring;
+package cn.sepiggy.proxy.dynamicproxy_jdk;
 
 public class UserServiceImpl implements UserService {
 

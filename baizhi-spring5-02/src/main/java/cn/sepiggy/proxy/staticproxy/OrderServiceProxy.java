@@ -1,4 +1,4 @@
-package cn.sepiggy.proxy.v1_staticproxy;
+package cn.sepiggy.proxy.staticproxy;
 
 public class OrderServiceProxy implements OrderService{
 
