@@ -2,25 +2,29 @@
 <!DOCTYPE configuration
         PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
 <configuration>
+
+    <!-- 类型别名 -->
     <typeAliases>
-        <typeAlias  alias="user"  type="com.baizhiedu.mybatis.User"/>
+        <typeAlias alias="User" type="com.baizhiedu.entity.User"/>
     </typeAliases>
 
+    <!-- 连接池 -->
     <environments default="mysql">
         <environment id="mysql">
             <transactionManager type="JDBC"></transactionManager>
             <dataSource type="POOLED">
                 <property name="driver" value="com.mysql.jdbc.Driver"/>
-                <property name="url" value="jdbc:mysql://localhost:3306/suns?useSSL=false"/>
+                <property name="url" value="jdbc:mysql://localhost:3306/spring5-suns?useSSL=false"/>
                 <property name="username" value="root"/>
-                <property name="password" value="123456"/>
+                <property name="password" value="12345"/>
             </dataSource>
         </environment>
     </environments>
 
+    <!-- mapper 文件位置 -->
     <mappers>
         <mapper resource="UserDAOMapper.xml"/>
-
     </mappers>
 </configuration>
