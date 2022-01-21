@@ -1,0 +1,29 @@
+1. 什么是事务？
+1) 事物是保证业务操作完整性的一种数据库机制。
+2) 事务的概念是由数据库来保证的，通过 Java 代码仅仅完成的是对这种机制的调用。
+
+2. 事务的四个特点 (ACID)
+1) A: 原子性
+2) C: 一致性
+3) I: 隔离性
+4) D: 持久性
+
+3. 如何控制事物？(不整合 Spring 的情况)
+1) 使用 JDBC 作为持久层框架
+   - 开启: Connection.setAutoCommit(false);
+   - 提交: Connection.commit();
+   - 回滚: Connection.rollback();
+2) 使用 Mybaits 作为持久层框架 (底层还是调用JDBC的事务控制)
+   - 开启: Mybaits 会自动开启事务
+   - 提交: SqlSession.commit();
+   - 回滚: SqlSession.rollback();
+
+不难发现，不管使用什么持久化技术，控制事务只涉及到三个环节：开启、提交、回滚。
+
+结论：无论使用什么持久化技术（JDBC, Mybatis, JPA），控制事务的底层都是通过 Connection 对象完成的。
+
+
+
+
+
+

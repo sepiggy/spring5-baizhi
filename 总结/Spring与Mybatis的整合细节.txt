@@ -1,0 +1,11 @@
+问题：Spring与Mybatis整合后，为什么DAO不提交事务，但是数据能够插⼊数据库中？
+
+原则：连接对象(Connection)控制了事物，谁控制了连接对象也就变相控制了事物.
+
+1. 在 Mybatis 默认的情况下, 使用内置连接池来创建 Connection 对象.
+   内置连接池初始化 Connection 对象的方式是 Connection.setAutoCommit(false) 因此默认情况下需要手工提交事物
+
+2. 若使用外部连接池 (eg. Druid, C3P0, DBCP)，他们初始化 Connection 对象的方式是：
+   Connection.setAutoCommit(true)，即自动控制事物，一条 sql 语句执行后会自动提交.
+
+注意：在未来实战中，还是会手工控制事物，后续 Spring 通过事物控制模块解决这个问题.

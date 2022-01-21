@@ -22,7 +22,7 @@ public class TestMybatisSpring {
     @Test
     public void test1() {
         ApplicationContext ctx = new ClassPathXmlApplicationContext("/applicationContext.xml");
-        String[] beanDefinitionNames = ctx.getBeanDefinitionNames();
+//        String[] beanDefinitionNames = ctx.getBeanDefinitionNames();
 //        System.out.println("beanDefinitionNames = " + Arrays.toString(beanDefinitionNames));
 
         UserDAO userDAO = (UserDAO) ctx.getBean("userDAO");
@@ -35,18 +35,18 @@ public class TestMybatisSpring {
     }
 
     /**
-     * 用于测试:Spring的事务处理
+     * 用于测试Spring的事务处理
+     * 连接对象控制了事物，谁控制了连接对象也就变相控制了事物
      */
     @Test
     public void test2() throws Exception {
         ApplicationContext ctx = new ClassPathXmlApplicationContext("/applicationContext.xml");
+        // 这里通过 "userService" 这个 id 其实获取到的是 UserService 的代理对象
         UserService userService = (UserService) ctx.getBean("userService");
-
         User user = new User();
-        user.setName("xiaowb3");
+        user.setName("xiaowb2");
         user.setPassword("989898");
         userService.register(user);
-
     }
 
     /**

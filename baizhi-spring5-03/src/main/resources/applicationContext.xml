@@ -6,49 +6,54 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
                            http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd http://www.springframework.org/schema/tx https://www.springframework.org/schema/tx/spring-tx.xsd">
 
-       <!--连接池-->
-       <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
-            <property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
-            <property name="url" value="jdbc:mysql://localhost:3306/spring5-suns?useSSL=false"></property>
-            <property name="username" value="root"></property>
-            <property name="password" value="12345"></property>
-       </bean>
+    <!--连接池-->
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
+        <property name="url" value="jdbc:mysql://localhost:3306/spring5-suns?useSSL=false"></property>
+        <property name="username" value="root"></property>
+        <property name="password" value="12345"></property>
+    </bean>
 
-        <!--创建SqlSessionFactory by SqlSessionFactoryBean-->
-        <!--Mybatis与Spring整合的过程中，将原来基于mybatis-config.xml创建SqlSession的过程优化为基于SqlSessionFactoryBean创建-->
-        <!--基于SqlSessionFactoryBean创建SqlSession需要注入如下依赖：数据源、类型别名、mapper文件位置(这些都是SqlSessionFactoryBean的属性)-->
-        <!--也就是说在Mybatis与Spring整合的过程中，不再需要mybatis-config.xml这个配置文件，其相关配置全部转移到对SqlSessionFactoryBean的属性注入(set方式)-->
-       <bean id="sqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
-           <property name="dataSource" ref="dataSource"></property>
-           <!--Mybatis中的别名配置为由类名来充当-->
-           <property name="typeAliasesPackage" value="com.baizhiedu.entity"></property>
-           <property name="mapperLocations">
-               <list>
-                   <value>classpath:mapper/*Mapper.xml</value>
-               </list>
-           </property>
-       </bean>
+    <!--创建SqlSessionFactory by SqlSessionFactoryBean-->
+    <!--Mybatis与Spring整合的过程中，将原来基于mybatis-config.xml创建SqlSession的过程优化为基于SqlSessionFactoryBean创建-->
+    <!--基于SqlSessionFactoryBean创建SqlSession需要注入如下依赖：数据源、类型别名、mapper文件位置(这些都是SqlSessionFactoryBean的属性)-->
+    <!--也就是说在Mybatis与Spring整合的过程中，不再需要mybatis-config.xml这个配置文件，其相关配置全部转移到对SqlSessionFactoryBean的属性注入(set方式)-->
+    <bean id="sqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"></property>
+        <!--Mybatis中的别名配置为由类名来充当-->
+        <property name="typeAliasesPackage" value="com.baizhiedu.entity"></property>
+        <property name="mapperLocations">
+            <list>
+                <value>classpath:mapper/*Mapper.xml</value>
+            </list>
+        </property>
+    </bean>
 
-       <!--创建DAO对象 by MapperScannerConfigure-->
-       <bean id="scanner" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-           <!--这个属性指的是sqlSessionFactoryBean的id值-->
-           <property name="sqlSessionFactoryBeanName" value="sqlSessionFactoryBean"></property>
-           <!--设置Dao接口所在的包-->
-           <property name="basePackage" value="com.baizhiedu.dao"></property>
-       </bean>
+    <!--创建DAO对象 by MapperScannerConfigure-->
+    <bean id="scanner" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <!--这个属性指的是sqlSessionFactoryBean的id值-->
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactoryBean"></property>
+        <!--设置Dao接口所在的包-->
+        <property name="basePackage" value="com.baizhiedu.dao"></property>
+    </bean>
 
-       <bean id="userService" class="com.baizhiedu.service.UserServiceImpl">
-           <!-- 这里的userDao这个Bean是由Spring帮我们创建的, 其id值命名规则约定如下-->
-           <!-- MapperScannerConfigurer所创建的DAO对象它的id值是接口首单词首字母小写-->
-           <!-- eg. UserDAO -> userDAO, ProductDAO -> productDAO -->
-           <property name="userDAO" ref="userDAO"/>
-       </bean>
+    <bean id="userService" class="com.baizhiedu.service.UserServiceImpl">
+        <!-- 这里的userDao这个Bean是由Spring帮我们创建的, 其id值命名规则约定如下-->
+        <!-- MapperScannerConfigurer所创建的DAO接口的实现类，它的id值是接口首单词首字母小写-->
+        <!-- eg. UserDAO -> userDAO, ProductDAO -> productDAO -->
+        <property name="userDAO" ref="userDAO"/>
+    </bean>
 
-       <!--DataSourceTransactionManager-->
-       <bean id="dataSourceTransactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-            <property name="dataSource" ref="dataSource"/>
-       </bean>
+    <!--DataSourceTransactionManager-->
+    <!--事务的AOP开发"额外功能"这一步Spring已经帮我们写好了，我们只需要引用配置即可-->
+    <bean id="dataSourceTransactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <!--注入事务的连接池-->
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
 
-
-       <tx:annotation-driven transaction-manager="dataSourceTransactionManager" proxy-target-class="true"/>
+    <!--组装切面-->
+    <!--proxy-target-class="true": 基于Cglib创建动态代理-->
+    <!--proxy-target-class="false": 基于JDK创建动态代理-->
+    <!--侧面印证了Spring事务控制的底层就是AOP-->
+    <tx:annotation-driven transaction-manager="dataSourceTransactionManager" proxy-target-class="true"/>
 </beans>
