@@ -2,13 +2,14 @@ package com.baizhiedu.service;
 
 import com.baizhiedu.dao.UserDAO;
 import com.baizhiedu.entity.User;
+import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
 
 // 通过 @Transactional 注解配置切入点
 // @Transactional(rollbackFor = {java.lang.Exception.class},noRollbackFor = {java.lang.RuntimeException.class})
 
 // UserServiceImpl 是原始对象
-@Transactional
+@Transactional(isolation = Isolation.READ_COMMITTED)
 public class UserServiceImpl implements UserService {
 
     private UserDAO userDAO;

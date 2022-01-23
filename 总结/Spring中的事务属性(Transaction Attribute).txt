@@ -1,0 +1,16 @@
+1. Spring中的事务属性：描述Spring事务特征的一系列值。
+
+2. Spring中的事务属性有以下五大属性：
+1) 隔离属性: 描述了事务解决并发问题的特征。
+2) 传播属性
+3) 只读属性
+4) 超时属性
+5) 异常属性
+
+3. 如何添加事务属性: 通过@Transactional注解指定
+@Transactional(isolation=,propagation=,readOnly=,timeout=,rollbackFor=,noRollbackFor=,)
+1) 隔离属性: 对应@Transactional注解中的isolation属性
+2) 传播属性: 对应@Transactional注解中的propagation属性
+3) 只读属性: 对应@Transactional注解中的readOnly属性
+4) 超时属性: 对应@Transactional注解中的timeout属性
+5) 异常属性: 对应@Transactional注解中的rollbackFor和noRollbackFor属性
