@@ -24,5 +24,4 @@ public class Main1 {
         val person = classPathXmlApplicationContext.getBean("person", Person.class);
         System.out.println("person = " + person);
     }
-
 }
