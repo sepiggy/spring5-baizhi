@@ -48,23 +48,23 @@ public class TestAnnotation {
 
 
     /**
-     * 用于测试:生命周期相关注解
+     * 用于测试生命周期相关的注解: @PostContruct、 @PreDestroy
      */
     @Test
     public void test4() {
+        // 调用初始化方法：被 @PostContruct 修饰的方法
         ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("/applicationContext.xml");
-
+        // 调用销毁方法：被 @PreDestroy 修饰的方法
         ctx.close();
     }
 
     /**
-     * 用于测试:@Autowired注解
+     * 用于测试@Autowired注解
      */
     @Test
     public void test5() {
         ApplicationContext ctx = new ClassPathXmlApplicationContext("/applicationContext.xml");
         UserService userServiceImpl = (UserService) ctx.getBean("userServiceImpl");
-
         userServiceImpl.register();
     }
 

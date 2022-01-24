@@ -1,5 +1,6 @@
 package com.baizhiedu.injection;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -10,7 +11,7 @@ public class UserServiceImpl implements UserService {
     @Qualifier("userDAOImpl")*/
 
     //@Resource(name="userDAOImpl")
-    @Resource
+//    @Resource
     private UserDAO userDAO;
 
     public UserDAO getUserDAO() {
@@ -19,6 +20,7 @@ public class UserServiceImpl implements UserService {
 
     /*    @Autowired
         @Qualifier("userDAOImpl")*/
+    @Autowired
     public void setUserDAO(UserDAO userDAO) {
         System.out.println("UserServiceImpl.setUserDAO");
         this.userDAO = userDAO;
