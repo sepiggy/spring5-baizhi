@@ -15,7 +15,7 @@ import java.sql.SQLException;
 
 public class StaticConnectionFactory {
 
-    public static Connection getConnection(){
+    public static Connection getConnection() {
         Connection conn = null;
         try {
             Class.forName("com.mysql.jdbc.Driver");

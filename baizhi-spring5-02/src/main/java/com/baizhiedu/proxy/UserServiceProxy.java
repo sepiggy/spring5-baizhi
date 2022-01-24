@@ -15,6 +15,6 @@ public class UserServiceProxy implements UserService {
     @Override
     public boolean login(String name, String password) {
         System.out.println("----log-----");
-        return userService.login(name,password);
+        return userService.login(name, password);
     }
 }

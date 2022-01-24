@@ -19,5 +19,5 @@
     <bean id="arround" class="com.baizhiedu.aspect.MyAspect"/>
 
     <!--告知Spring基于注解进行AOP编程-->
-    <aop:aspectj-autoproxy proxy-target-class="true" />
+    <aop:aspectj-autoproxy proxy-target-class="true"/>
 </beans>

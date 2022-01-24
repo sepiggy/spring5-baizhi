@@ -28,6 +28,6 @@ public class ProxyBeanPostProcessor implements BeanPostProcessor {
                 return ret;
             }
         };
-      return Proxy.newProxyInstance(ProxyBeanPostProcessor.class.getClassLoader(),bean.getClass().getInterfaces(),handler);
+        return Proxy.newProxyInstance(ProxyBeanPostProcessor.class.getClassLoader(), bean.getClass().getInterfaces(), handler);
     }
 }

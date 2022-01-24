@@ -17,8 +17,8 @@ public class UserServiceImpl implements UserService {
         return userDAO;
     }
 
-/*    @Autowired
-    @Qualifier("userDAOImpl")*/
+    /*    @Autowired
+        @Qualifier("userDAOImpl")*/
     public void setUserDAO(UserDAO userDAO) {
         System.out.println("UserServiceImpl.setUserDAO");
         this.userDAO = userDAO;

@@ -4,7 +4,8 @@
 <mapper namespace="com.baizhiedu.mybatis.UserDAO">
 
     <insert id="save" parameterType="User">
-        insert into t_users (name,password) values (#{name},#{password})
+        insert into t_users (name, password)
+        values (#{name}, #{password})
     </insert>
 
 </mapper>

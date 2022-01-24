@@ -1,6 +1,6 @@
 package cn.sepiggy.proxy.staticproxy;
 
-public class OrderServiceProxy implements OrderService{
+public class OrderServiceProxy implements OrderService {
 
     private OrderServiceImpl orderService = new OrderServiceImpl();
 

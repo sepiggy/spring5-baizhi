@@ -8,6 +8,6 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     public void queryUserByNameAndPassword(String name, String password) {
-        System.out.println("query User name = " + name+" password = "+password);
+        System.out.println("query User name = " + name + " password = " + password);
     }
 }

@@ -13,18 +13,18 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import java.sql.Connection;
 
 public class TestAnnotation {
-    
+
     /**
-     *  用于测试:配置Bean
+     * 用于测试:配置Bean
      */
     @Test
     public void test1() {
         //ApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig.class);
         ApplicationContext ctx = new AnnotationConfigApplicationContext("com.baizhiedu");
     }
-    
+
     /**
-     *  用于测试:@Bean注解
+     * 用于测试:@Bean注解
      */
     @Test
     public void test2() {
@@ -43,7 +43,7 @@ public class TestAnnotation {
 
 
     /**
-     *  用于测试:对象的创建次数
+     * 用于测试:对象的创建次数
      */
     @Test
     public void test3() {
@@ -54,9 +54,9 @@ public class TestAnnotation {
         System.out.println("u1 = " + u1);
         System.out.println(u);
     }
-    
+
     /**
-     *  用于测试:@Bean注解注入
+     * 用于测试:@Bean注解注入
      */
     @Test
     public void test4() {
@@ -64,9 +64,9 @@ public class TestAnnotation {
         UserService userService = (UserService) ctx.getBean("userService");
         userService.register();
     }
-    
+
     /**
-     *  用于测试:@Bean JDK类型的注入
+     * 用于测试:@Bean JDK类型的注入
      */
     @Test
     public void test5() {
@@ -78,7 +78,7 @@ public class TestAnnotation {
     }
 
     /**
-     *  用于测试:@ComponentScan 基本使用
+     * 用于测试:@ComponentScan 基本使用
      */
     @Test
     public void test6() {
@@ -91,7 +91,7 @@ public class TestAnnotation {
 
 
     /**
-     *  用于测试:配置的覆盖
+     * 用于测试:配置的覆盖
      */
     @Test
     public void test7() {
@@ -105,11 +105,11 @@ public class TestAnnotation {
     }
 
     /**
-     *  用于测试:解耦合
+     * 用于测试:解耦合
      */
     @Test
     public void test8() {
-        ApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig4.class,AppConfig5.class);
+        ApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig4.class, AppConfig5.class);
         //ApplicationContext ctx = new AnnotationConfigApplicationContext("com.baizhiedu");
         UserDAO userDAO = (UserDAO) ctx.getBean("userDAO");
 
@@ -118,7 +118,7 @@ public class TestAnnotation {
 
 
     /**
-     *  用于测试:多配置Bean的整合
+     * 用于测试:多配置Bean的整合
      */
     @Test
     public void test9() {
@@ -145,9 +145,8 @@ public class TestAnnotation {
     }
 
 
-
     /**
-     *  用于测试:@Component与配置Bean的整合
+     * 用于测试:@Component与配置Bean的整合
      */
     @Test
     public void test11() {
@@ -172,6 +171,7 @@ public class TestAnnotation {
         userService.register();
 
     }
+
     @Test
     public void test13() {
         ApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig.class);
@@ -180,7 +180,7 @@ public class TestAnnotation {
     }
 
     /**
-     *  用于测试:四维一体开发
+     * 用于测试:四维一体开发
      */
     @Test
     public void test14() {
@@ -191,12 +191,6 @@ public class TestAnnotation {
         System.out.println("account.getName() = " + account.getName());
 
     }
-
-
-
-
-
-
 
 
 }

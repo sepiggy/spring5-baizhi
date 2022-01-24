@@ -15,7 +15,7 @@ import java.util.List;
 public class TestAnntation2 {
 
     /**
-     *  用于测试:Spring + Mybatis注解的整合
+     * 用于测试:Spring + Mybatis注解的整合
      */
     @Test
     public void test1() {
@@ -30,7 +30,7 @@ public class TestAnntation2 {
     }
 
     /**
-     *  用于测试:注解版 事务开发
+     * 用于测试:注解版 事务开发
      */
     @Test
     public void test2() {
@@ -46,7 +46,7 @@ public class TestAnntation2 {
 
 
     /**
-     *  用于测试:YML
+     * 用于测试:YML
      */
     @Test
     public void test3() {
@@ -60,15 +60,6 @@ public class TestAnntation2 {
             System.out.println("s = " + s);
         }
     }
-
-
-
-
-
-
-
-
-
 
 
 }

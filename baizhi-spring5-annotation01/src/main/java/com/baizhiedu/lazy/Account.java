@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 @Component
 @Lazy
 public class Account {
-    public Account(){
+    public Account() {
         System.out.println("Account.Account");
     }
 

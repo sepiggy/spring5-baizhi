@@ -11,7 +11,8 @@ import org.springframework.stereotype.Component;
 public class MyApsect {
 
     @Pointcut("execution(* com.baizhiedu.aop..*.*(..))")
-    public void pointCut(){}
+    public void pointCut() {
+    }
 
     @Around("pointCut()")
     public Object arround(ProceedingJoinPoint joinPoint) throws Throwable {

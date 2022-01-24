@@ -13,7 +13,7 @@ public class MyBeanPostProcessor implements BeanPostProcessor {
     @Override
     public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
 
-        if(bean instanceof Categroy) {
+        if (bean instanceof Categroy) {
             Categroy categroy = (Categroy) bean;
             categroy.setName("xiaowb");
         }
