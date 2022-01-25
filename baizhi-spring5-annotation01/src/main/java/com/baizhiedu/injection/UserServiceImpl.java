@@ -12,6 +12,7 @@ public class UserServiceImpl implements UserService {
 
     //@Resource(name="userDAOImpl")
 //    @Resource
+    @Autowired
     private UserDAO userDAO;
 
     public UserDAO getUserDAO() {
@@ -20,7 +21,7 @@ public class UserServiceImpl implements UserService {
 
     /*    @Autowired
         @Qualifier("userDAOImpl")*/
-    @Autowired
+//    @Autowired
     public void setUserDAO(UserDAO userDAO) {
         System.out.println("UserServiceImpl.setUserDAO");
         this.userDAO = userDAO;

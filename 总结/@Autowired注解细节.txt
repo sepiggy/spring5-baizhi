@@ -1,0 +1,18 @@
+@Autowired 是对用户自定义类型成员变量进行依赖注入的注解
+
+@Autowired 注解细节：
+
+1. @Autowired 注解默认基于类型进行注入，即注入对象的类型必须与目标成员变量类型相同或者是其子类（实现类）
+
+2. @Autowired 和 @Qualifier 注解配合使用可以基于名称（就是 Bean 对象的 id 值）进行注入
+
+3. @Autowired 注解放置位置
+1) 放置在对应成员变量的 set 方法上，此时 Spring 通过属性的 setter 完成依赖注入
+2) 放置在成员变量之上，此时 Spring 通过反射直接对属性完成注入
+
+4. JavaEE 规范中类似功能的注解
+1) JSR250 规范中的 @Resource
+- @Resource(name = "XXX")，指定 name 属性: 基于名称进行注入 = @Autowired + @Qualifier
+- @Resource，单独使用: 基于类型进行注入 = @Autowired
+2) JSR330 规范中的 @Inject (EJB 3.0)
+- @Inject 作用与 @Autowired 完全一致

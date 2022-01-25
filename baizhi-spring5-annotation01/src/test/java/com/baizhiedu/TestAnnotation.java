@@ -69,7 +69,7 @@ public class TestAnnotation {
     }
 
     /**
-     * 用于测试:Value
+     * 用于测试@Value注解
      */
     @Test
     public void test6() {
@@ -77,11 +77,10 @@ public class TestAnnotation {
         Category category = (Category) ctx.getBean("category");
         System.out.println("category.getId() = " + category.getId());
         System.out.println("category.getName() = " + category.getName());
-
     }
 
     /**
-     * 用于测试:排除策略
+     * 用于测试排除策略
      */
     @Test
     public void test7() {
