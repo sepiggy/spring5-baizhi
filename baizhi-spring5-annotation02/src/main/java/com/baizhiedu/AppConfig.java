@@ -15,12 +15,13 @@ public class AppConfig {
 
     /**
      * 简单对象
+     *
      * @return
      */
     @Bean("u")
     /*@Scope("singleton")
-    */
-    public User user(){
+     */
+    public User user() {
         return new User();
     }
 

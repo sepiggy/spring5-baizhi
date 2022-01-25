@@ -8,7 +8,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 
 public class TestAnnotation1 {
     /**
-     *  用于测试:AOP
+     * 用于测试:AOP
      */
     @Test
     public void test1() {

@@ -33,7 +33,7 @@ public class TestJDKProxy {
             return ret;
         };
 
-        UserService userServiceProxy = (UserService)Proxy.newProxyInstance(UserServiceImpl.class.getClassLoader(),userService.getClass().getInterfaces(),handler);
+        UserService userServiceProxy = (UserService) Proxy.newProxyInstance(UserServiceImpl.class.getClassLoader(), userService.getClass().getInterfaces(), handler);
 
         userServiceProxy.login("suns", "123456");
         userServiceProxy.register(new User());

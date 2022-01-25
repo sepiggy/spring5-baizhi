@@ -131,7 +131,7 @@
 
     <bean id="account" class="com.baizhiedu.scope.Account"/>
 
-<!--    <bean id="product1" scope="singleton"  lazy-init="false" class="com.baizhiedu.life.Product"/>-->
+    <!--    <bean id="product1" scope="singleton"  lazy-init="false" class="com.baizhiedu.life.Product"/>-->
 
     <bean id="product2" scope="prototype" class="com.baizhiedu.life.Product" init-method="myInit"/>
 

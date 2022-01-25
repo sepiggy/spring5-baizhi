@@ -18,7 +18,7 @@ public class Person {
 
     private Properties p;
 
-    private Map<String,String> qqs;
+    private Map<String, String> qqs;
 
     public Properties getP() {
         return p;

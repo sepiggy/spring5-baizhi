@@ -2,7 +2,7 @@ package com.baizhiedu.proxy;
 
 public class OrderServiceProxy implements OrderService {
 
-    private OrderServiceImpl orderService  = new OrderServiceImpl();
+    private OrderServiceImpl orderService = new OrderServiceImpl();
 
     @Override
     public void showOrder() {

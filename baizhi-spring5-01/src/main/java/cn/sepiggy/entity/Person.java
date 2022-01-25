@@ -1,7 +1,6 @@
 package cn.sepiggy.entity;
 
 public class Person {
-
     private Integer id;
     private String name;
 
@@ -34,5 +33,4 @@ public class Person {
     public Person() {
         System.out.println("Person.Person");
     }
-
 }

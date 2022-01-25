@@ -1,6 +1,6 @@
 package cn.sepiggy.proxy.staticproxy;
 
-public class UserServiceProxy  implements UserService{
+public class UserServiceProxy implements UserService {
 
     private UserServiceImpl userService = new UserServiceImpl();
 

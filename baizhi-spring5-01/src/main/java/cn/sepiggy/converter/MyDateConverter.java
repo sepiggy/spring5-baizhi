@@ -18,7 +18,6 @@ public class MyDateConverter implements Converter<String, Date> {
 
     @Override
     public Date convert(String source) {
-
         Date date = null;
         val sdf = new SimpleDateFormat(pattern);
         try {
@@ -28,6 +27,5 @@ public class MyDateConverter implements Converter<String, Date> {
         }
         return date;
     }
-
 }
 

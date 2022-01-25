@@ -7,17 +7,15 @@
                            http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd http://www.springframework.org/schema/tx https://www.springframework.org/schema/tx/spring-tx.xsd">
 
 
+    <bean id="userService" class="com.baizhiedu.service.UserServiceImpl">
+        <property name="userDAO" ref="userDAO"/>
+    </bean>
 
-          <bean id="userService" class="com.baizhiedu.service.UserServiceImpl">
-              <property name="userDAO" ref="userDAO"/>
-          </bean>
+    <bean id="dataSourceTransactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
 
-          <bean id="dataSourceTransactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-              <property name="dataSource" ref="dataSource"/>
-          </bean>
-
-          <tx:annotation-driven transaction-manager="dataSourceTransactionManager"/>
-
+    <tx:annotation-driven transaction-manager="dataSourceTransactionManager"/>
 
 
 </beans>

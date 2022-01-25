@@ -1,6 +1,6 @@
 package cn.sepiggy.proxy.staticproxy;
 
-public class UserServiceImpl implements UserService{
+public class UserServiceImpl implements UserService {
 
     @Override
     public void register(User user) {

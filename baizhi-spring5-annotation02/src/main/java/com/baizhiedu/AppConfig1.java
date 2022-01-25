@@ -50,17 +50,4 @@ public class AppConfig1 {
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 }

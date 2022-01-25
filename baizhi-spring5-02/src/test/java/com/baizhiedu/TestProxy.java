@@ -11,7 +11,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class TestProxy {
     /**
-     *  用于测试:静态代理的代码
+     * 用于测试:静态代理的代码
      */
     @Test
     public void test1() {
@@ -24,9 +24,9 @@ public class TestProxy {
         OrderService orderService = new OrderServiceProxy();
         orderService.showOrder();
     }
-    
+
     /**
-     *  用于测试:Spring的动态代理
+     * 用于测试:Spring的动态代理
      */
     @Test
     public void test2() {
@@ -41,7 +41,7 @@ public class TestProxy {
     }
 
     /**
-     *  用于测试:OrderService动态代理
+     * 用于测试:OrderService动态代理
      */
     @Test
     public void test3() {
@@ -50,26 +50,6 @@ public class TestProxy {
 
         orderService.showOrder();
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 }

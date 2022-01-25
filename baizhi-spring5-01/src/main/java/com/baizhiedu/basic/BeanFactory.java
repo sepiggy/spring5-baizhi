@@ -7,7 +7,7 @@ import java.util.Properties;
 public class BeanFactory {
     private static Properties env = new Properties();
 
-    static{
+    static {
         try {
             //第一步 获得IO输入流
             InputStream inputStream = BeanFactory.class.getResourceAsStream("/applicationContext.properties");
@@ -70,54 +70,19 @@ public class BeanFactory {
 */
 
 
-     /*
-      key 小配置文件中的key [userDAO,userService]
-      */
-     public static Object getBean(String key){
-         Object ret = null;
-         try {
-             Class clazz = Class.forName(env.getProperty(key));
-             ret = clazz.newInstance();
-         } catch (Exception e) {
+    /*
+     key 小配置文件中的key [userDAO,userService]
+     */
+    public static Object getBean(String key) {
+        Object ret = null;
+        try {
+            Class clazz = Class.forName(env.getProperty(key));
+            ret = clazz.newInstance();
+        } catch (Exception e) {
             e.printStackTrace();
-         }
-         return ret;
-     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        }
+        return ret;
+    }
 
 
 }
