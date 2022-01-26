@@ -90,6 +90,4 @@ public class TestAnnotation {
             System.out.println("beanDefinitionName = " + beanDefinitionName);
         }
     }
-
-
 }

@@ -1,5 +1,6 @@
 package com.baizhiedu;
 
+import cn.sepiggy.AppConfig0;
 import com.baizhiedu.bean.Customer;
 import com.baizhiedu.bean.User;
 import com.baizhiedu.four.Account;
@@ -15,27 +16,30 @@ import java.sql.Connection;
 public class TestAnnotation {
 
     /**
-     * 用于测试:配置Bean
+     * 用于测试配置 Bean
+     * 对于配置 Bean，使用新的工厂实现类 AnnotationConfigApplicationContext 代替 XML 配置文件中的 ClassPathXmlApplicationContext
      */
     @Test
     public void test1() {
-        //ApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig.class);
-        ApplicationContext ctx = new AnnotationConfigApplicationContext("com.baizhiedu");
+        // 1) 指定配置 Bean 的 class
+        // ApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig0.class);
+        // 2) 指定配置 Bean 所在的包
+        ApplicationContext ctx = new AnnotationConfigApplicationContext("cn.sepiggy");
     }
 
     /**
-     * 用于测试:@Bean注解
+     * 用于测试 @Bean 注解
+     * @Bean 只能在配置 Bean (被 @Configuration 修饰的类) 中使用，用来修饰配置 Bean 中的方法
      */
     @Test
     public void test2() {
         ApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig.class);
-        /*User user = (User) ctx.getBean("user");
-
+//        User user = (User) ctx.getBean("user");
+        User user = (User) ctx.getBean("u");
         System.out.println("user = " + user);
-        */
 
-        /*Connection conn = (Connection) ctx.getBean("conn");
-        System.out.println("conn = " + conn);*/
+        Connection conn = (Connection) ctx.getBean("conn");
+        System.out.println("conn = " + conn);
 
         Connection conn1 = (Connection) ctx.getBean("conn1");
         System.out.println("conn1 = " + conn1);
@@ -43,16 +47,15 @@ public class TestAnnotation {
 
 
     /**
-     * 用于测试:对象的创建次数
+     * 用于测试对象的创建次数
      */
     @Test
     public void test3() {
         ApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig.class);
         User u = (User) ctx.getBean("u");
         User u1 = (User) ctx.getBean("u");
-
+        System.out.println("u = " + u);
         System.out.println("u1 = " + u1);
-        System.out.println(u);
     }
 
     /**

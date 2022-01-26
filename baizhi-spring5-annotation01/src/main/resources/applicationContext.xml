@@ -6,7 +6,45 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
                            http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd http://www.springframework.org/schema/tx https://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <context:component-scan base-package="com.baizhiedu"/>
+    <!--<context:component-scan base-package="com.baizhiedu"/>-->
+
+    <!--注解扫描排除方式-->
+    <!--context:exclude-filter子标签用来配置扫描过程中想要排除的类-->
+    <!--type属性和expression属性需要配合使用-->
+    <!--多种排除策略可以叠加-->
+
+    <!--type="assignable" 用来排除特定的类型不进行扫描-->
+    <!--
+        <context:component-scan base-package="com.baizhiedu">
+            <context:exclude-filter type="assignable" expression="com.baizhiedu.bean.User"/>
+        </context:component-scan>
+    -->
+
+    <!--type="annotation" 用来排除特定的注解不进行扫描-->
+    <!--用来排除被@Service标注的类-->
+    <!--
+        <context:component-scan base-package="com.baizhiedu">
+            <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Service"/>
+        </context:component-scan>
+    -->
+
+    <!--type="aspectj" 用来排除被切入点表达式指定的类不进行扫描(仅支持包切入点和类切入点)(常用)-->
+    <!--
+        <context:component-scan base-package="com.baizhiedu">
+            <context:exclude-filter type="aspectj" expression="com.baizhiedu.injection..*"/>
+            <context:exclude-filter type="aspectj" expression="*..User"/>
+        </context:component-scan>
+    -->
+
+    <!--注解扫描包含方式-->
+    <!--context:include-filter子标签用来配置扫描过程中想要包含的类-->
+    <!--需要指定use-default-filters="false"让Spring默认的注解扫描方式失效-->
+    <!--其type和expression属性用法与context:exclude-filter相同-->
+    <!--多种包含策略可以叠加-->
+    <context:component-scan base-package="com.baizhiedu" use-default-filters="false">
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Repository"/>
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Service"/>
+    </context:component-scan>
 
     <!--Spring配置文件覆盖注解配置内容 -->
     <!--Spring配置文件中id值和class值要和注解中的设置保持一致，才能覆盖成功-->
@@ -14,30 +52,17 @@
         <property name="id" value="10"/>
     </bean>
 
-    <!--<context:component-scan base-package="com.baizhiedu">
-         <context:exclude-filter type="assignable" expression="com.baizhiedu.bean.User"/>
-
-        &lt;!&ndash;<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Service"/>
-        &ndash;&gt;
-         <context:exclude-filter type="aspectj" expression="com.baizhiedu.injection..*"/>
-&lt;!&ndash;
-        <context:exclude-filter type="aspectj" expression="*..User"/>
-&ndash;&gt;
-    </context:component-scan>
--->
-
-    <!--    <context:component-scan base-package="com.baizhiedu" use-default-filters="false">-->
-    <!--        <context:include-filter type="annotation" expression="org.springframework.stereotype.Repository"/>-->
-    <!--        <context:include-filter type="annotation" expression="org.springframework.stereotype.Service"/>-->
-    <!--    </context:component-scan>-->
-
-
-    <!--<bean id="userService" class="com.baizhiedu.injection.UserServiceImpl">
-        <property name="userDAO" ref="userDAOImpl"/>
-    </bean>
+    <!--配置互通-->
+    <!--基于注解创建Bean和基于XML配置文件创建Bean是可以互相引用的，这里的userService是通过XML配置文件创建的，
+        而userDAOImpl是通过@Repository注解创建的，两者可以互相引用-->
+    <!--
+        <bean id="userService" class="com.baizhiedu.injection.UserServiceImpl">
+            <property name="userDAO" ref="userDAOImpl"/>
+        </bean>
     -->
 
-    <!--<context:property-placeholder location="classpath:init.properties"/>
--->
+    <!--
+        <context:property-placeholder location="classpath:init.properties"/>
+    -->
 </beans>
 
