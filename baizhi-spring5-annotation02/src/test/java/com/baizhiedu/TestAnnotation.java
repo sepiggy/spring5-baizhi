@@ -1,6 +1,5 @@
 package com.baizhiedu;
 
-import cn.sepiggy.AppConfig0;
 import com.baizhiedu.bean.Customer;
 import com.baizhiedu.bean.User;
 import com.baizhiedu.four.Account;
@@ -28,12 +27,12 @@ public class TestAnnotation {
     }
 
     /**
-     * 用于测试 @Bean 注解
+     * 用于测试@Bean注解
      * @Bean 只能在配置 Bean (被 @Configuration 修饰的类) 中使用，用来修饰配置 Bean 中的方法
      */
     @Test
     public void test2() {
-        ApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig.class);
+        ApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig_通过Bean注解创建对象.class);
 //        User user = (User) ctx.getBean("user");
         User user = (User) ctx.getBean("u");
         System.out.println("user = " + user);
@@ -51,7 +50,7 @@ public class TestAnnotation {
      */
     @Test
     public void test3() {
-        ApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig.class);
+        ApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig_通过Bean注解创建对象.class);
         User u = (User) ctx.getBean("u");
         User u1 = (User) ctx.getBean("u");
         System.out.println("u = " + u);
@@ -59,39 +58,39 @@ public class TestAnnotation {
     }
 
     /**
-     * 用于测试:@Bean注解注入
+     * 用于测试@Bean注入用户自定义类型
      */
     @Test
     public void test4() {
-        ApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig1.class);
+//        ApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig_通过Bean注解注入用户自定义类型.class);
+        ApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig_通过Bean注解注入用户自定义类型简化写法.class);
         UserService userService = (UserService) ctx.getBean("userService");
         userService.register();
     }
 
     /**
-     * 用于测试:@Bean JDK类型的注入
+     * 用于测试@Bean注入JDK类型
      */
     @Test
     public void test5() {
-        ApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig1.class);
+//        ApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig_通过Bean注解注入JDK类型.class);
+        ApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig_通过Bean注解注入JDK类型解耦合版.class);
         Customer customer = (Customer) ctx.getBean("customer");
         System.out.println("customer = " + customer.getId());
         System.out.println("customer = " + customer.getName());
-
     }
 
     /**
-     * 用于测试:@ComponentScan 基本使用
+     * 用于测试@ComponentScan基本使用
      */
     @Test
     public void test6() {
-        ApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig2.class);
+        ApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig_通过ComponentScan注解配置扫描范围.class);
         String[] beanDefinitionNames = ctx.getBeanDefinitionNames();
         for (String beanDefinitionName : beanDefinitionNames) {
             System.out.println("beanDefinitionName = " + beanDefinitionName);
         }
     }
-
 
     /**
      * 用于测试:配置的覆盖
@@ -177,7 +176,7 @@ public class TestAnnotation {
 
     @Test
     public void test13() {
-        ApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig.class);
+        ApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig_通过Bean注解创建对象.class);
         User u = (User) ctx.getBean("u");
 
     }

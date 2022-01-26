@@ -4,7 +4,6 @@ import com.baizhiedu.bean.ConnectionFactoryBean;
 import com.baizhiedu.bean.User;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Lazy;
 import org.springframework.context.annotation.Scope;
 
 import java.sql.Connection;
@@ -16,7 +15,7 @@ import java.sql.SQLException;
  * 通过 @Configuration 注解标注一个类是配置 Bean，用于替代 XML 配置文件
  */
 @Configuration
-public class AppConfig {
+public class AppConfig_通过Bean注解创建对象 {
 
 
     /**

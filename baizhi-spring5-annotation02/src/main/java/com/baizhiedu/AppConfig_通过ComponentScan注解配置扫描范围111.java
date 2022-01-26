@@ -14,6 +14,6 @@ import org.springframework.context.annotation.Import;
                includeFilters = {@ComponentScan.Filter(type= FilterType.ANNOTATION,value={Service.class})})*/
 @ComponentScan(basePackages = "com.baizhiedu.scan")
 @Import(User.class)
-public class AppConfig2 {
+public class AppConfig_通过ComponentScan注解配置扫描范围111 {
 
 }

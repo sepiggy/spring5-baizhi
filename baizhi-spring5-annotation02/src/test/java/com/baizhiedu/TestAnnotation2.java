@@ -12,7 +12,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 
 import java.util.List;
 
-public class TestAnntation2 {
+public class TestAnnotation2 {
 
     /**
      * 用于测试:Spring + Mybatis注解的整合
