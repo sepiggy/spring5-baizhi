@@ -6,6 +6,12 @@ import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
 
+/**
+ * 创建切面类：
+ * 1. 额外功能
+ * 2. 切入点
+ * 3. 组装切面
+ */
 @Aspect
 @Component
 public class MyApsect {

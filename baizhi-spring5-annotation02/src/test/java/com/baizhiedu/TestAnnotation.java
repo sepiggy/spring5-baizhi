@@ -28,6 +28,7 @@ public class TestAnnotation {
 
     /**
      * 用于测试@Bean注解
+     *
      * @Bean 只能在配置 Bean (被 @Configuration 修饰的类) 中使用，用来修饰配置 Bean 中的方法
      */
     @Test
@@ -129,69 +130,70 @@ public class TestAnnotation {
     }
 
     /**
-     * 用于测试:多配置Bean的整合
+     * 用于测试多配置Bean的整合
      */
     @Test
     public void test9() {
+        // 基于包扫描的方式进行多个配置Bean整合
         ApplicationContext ctx = new AnnotationConfigApplicationContext("com.baizhiedu.config");
         UserDAO userDAO = (UserDAO) ctx.getBean("userDAO");
         UserService userService = (UserService) ctx.getBean("userService");
         System.out.println("userService = " + userService);
         System.out.println("userDAO = " + userDAO);
-
-    }
-
-
-    @Test
-    public void test10() {
-        ApplicationContext ctx = new AnnotationConfigApplicationContext(com.baizhiedu.config.AppConfig1.class);
-        UserDAO userDAO = (UserDAO) ctx.getBean("userDAO");
-        UserService userService = (UserService) ctx.getBean("userService");
-        /*System.out.println("userService = " + userService);
-        System.out.println("userDAO = " + userDAO);
-
-        */
-
-        userService.register();
     }
 
 
     /**
-     * 用于测试:@Component与配置Bean的整合
+     * 用于测试跨配置注入
+     */
+    @Test
+    public void test10() {
+        ApplicationContext ctx = new AnnotationConfigApplicationContext(com.baizhiedu.config.AppConfig1.class);
+        UserService userService = (UserService) ctx.getBean("userService");
+        userService.register();
+    }
+
+    /**
+     * 用于测试@Component与配置Bean的整合
      */
     @Test
     public void test11() {
         ApplicationContext ctx = new AnnotationConfigApplicationContext(com.baizhiedu.config.AppConfig3.class);
         UserService userService = (UserService) ctx.getBean("userService");
-        /*UserDAO userDAOImpl = (UserDAO) ctx.getBean("userDAOImpl");
+/*
+        UserDAO userDAOImpl = (UserDAO) ctx.getBean("userDAOImpl");
         System.out.println("userService = " + userService);
         System.out.println("userDAOImpl = " + userDAOImpl);
 */
         userService.register();
     }
 
-
+    /**
+     * 用于测试配置Bean与XML配置文件的整合
+     */
     @Test
     public void test12() {
         ApplicationContext ctx = new AnnotationConfigApplicationContext(com.baizhiedu.config.AppConfig4.class);
         UserService userService = (UserService) ctx.getBean("userService");
-        /*UserDAO userDAOImpl = (UserDAO) ctx.getBean("userDAO");
+/*
+        UserDAO userDAOImpl = (UserDAO) ctx.getBean("userDAO");
         System.out.println("userService = " + userService);
-        System.out.println("userDAOImpl = " + userDAOImpl);*/
-
+        System.out.println("userDAOImpl = " + userDAOImpl);
+*/
         userService.register();
-
     }
 
+    /**
+     * 用于验证配置Bean的本质是通过Cglib创建的代理对象
+     */
     @Test
     public void test13() {
         ApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig_通过Bean注解创建对象.class);
         User u = (User) ctx.getBean("u");
-
     }
 
     /**
-     * 用于测试:四维一体开发
+     * 用于测试四维一体开发
      */
     @Test
     public void test14() {
@@ -200,10 +202,7 @@ public class TestAnnotation {
         Account account = (Account) ctx.getBean("account");
         System.out.println("account.getId() = " + account.getId());
         System.out.println("account.getName() = " + account.getName());
-
     }
-
-
 }
 
 

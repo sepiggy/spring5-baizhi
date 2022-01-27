@@ -8,6 +8,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 
+/**
+ * 演示多配置Bean信息整合
+ */
 @Configuration
 @Import(AppConfig2.class)
 public class AppConfig1 {
