@@ -81,11 +81,14 @@ public class TestAnnotation {
     }
 
     /**
-     * 用于测试@ComponentScan基本使用
+     * 用于测试@ComponentScan和@Import基本使用
      */
     @Test
     public void test6() {
-        ApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig_通过ComponentScan注解配置扫描范围.class);
+//        ApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig_通过ComponentScan注解配置扫描范围.class);
+//        ApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig_通过ComponentScan注解配置排除策略.class);
+//        ApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig_通过ComponentScan注解配置包含策略.class);
+        ApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig_通过Import注解创建Bean对象.class);
         String[] beanDefinitionNames = ctx.getBeanDefinitionNames();
         for (String beanDefinitionName : beanDefinitionNames) {
             System.out.println("beanDefinitionName = " + beanDefinitionName);
@@ -93,31 +96,37 @@ public class TestAnnotation {
     }
 
     /**
-     * 用于测试:配置的覆盖
+     * 用于测试配置的覆盖
      */
     @Test
     public void test7() {
-        ApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig3.class);
+        ApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig_Spring创建Bean对象配置覆盖.class);
         Customer customer = (Customer) ctx.getBean("customer");
         System.out.println("customer.getId() = " + customer.getId());
         System.out.println("customer.getName() = " + customer.getName());
-
-        //new ClassPathXmlApplicationContext("");
-
     }
 
     /**
-     * 用于测试:解耦合
+     * 用于测试注解配置解耦合
      */
     @Test
     public void test8() {
-        ApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig4.class, AppConfig5.class);
-        //ApplicationContext ctx = new AnnotationConfigApplicationContext("com.baizhiedu");
-        UserDAO userDAO = (UserDAO) ctx.getBean("userDAO");
+        // AnnotationConfigApplicationContext 可以接收多个配置Bean参数
+        // 这里使用多个配置文件的好处是保持"开闭原则"
+        // 原来的配置Bean不必做修改
+        // 只需要增加一个新的配置Bean, 而这个新的配置Bean的作用就是读取配置文件中新的UserDAO的实现类
+        // 从而可以覆盖使用@Component注解创建的原有的UserDAO的实现类
+        ApplicationContext ctx = new AnnotationConfigApplicationContext(
+                AppConfig_使用Spring配置覆盖解决注解配置的耦合问题原配置Bean.class,
+                AppConfig_使用Spring配置覆盖解决注解配置的耦合问题新增配置Bean.class
+        );
 
+        // 也可以指定Spring工厂在特定package内搜索配置Bean
+        // ApplicationContext ctx = new AnnotationConfigApplicationContext("com.baizhiedu");
+
+        UserDAO userDAO = (UserDAO) ctx.getBean("userDAO");
         userDAO.save();
     }
-
 
     /**
      * 用于测试:多配置Bean的整合

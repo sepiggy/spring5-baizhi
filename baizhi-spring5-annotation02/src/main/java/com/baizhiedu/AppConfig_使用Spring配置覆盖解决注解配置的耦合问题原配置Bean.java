@@ -6,8 +6,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-//@ImportResource("applicationContext.xml")
-public class AppConfig4 {
+public class AppConfig_使用Spring配置覆盖解决注解配置的耦合问题原配置Bean {
 
     @Bean
     public UserDAO userDAO() {

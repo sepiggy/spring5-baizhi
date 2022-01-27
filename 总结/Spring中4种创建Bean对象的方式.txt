@@ -1,0 +1,22 @@
+一）Spring中4种创建Bean对象的应用场景：
+
+1. @Component及其衍生注解(@Controller,@Service,@Repository) + @Autowired
+- 用于程序员自己开发的类型（有源码）
+- eg. UserService, UserDao, UserController
+
+2. @Bean + @Configuration
+- 用于框架提供的类型，或者别的程序员开发的类型（没有源码）
+- eg. SqlSessionFactoryBean
+
+3. XML配置文件Bean标签
+- 基于纯注解的开发流程中可以不用
+- 与遗留系统的整合
+
+4. 基于@Import注解创建对象
+- Spring框架的底层使用
+- 多配置Bean的整合
+
+二）配置优先级
+1. @Component及其衍生注解 < @Bean < XML配置文件Bean标签 (越麻烦的配置优先级越高)
+2. 优先级高的配置可以覆盖优先级低的配置，需要Bean的id值保持一致
+
