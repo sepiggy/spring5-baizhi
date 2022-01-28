@@ -15,7 +15,7 @@ import java.util.List;
 public class TestAnnotation2 {
 
     /**
-     * 用于测试:Spring + Mybatis注解的整合
+     * 用于测试Spring + Mybatis注解的整合
      */
     @Test
     public void test1() {
@@ -30,7 +30,7 @@ public class TestAnnotation2 {
     }
 
     /**
-     * 用于测试:注解版 事务开发
+     * 用于测试注解版事务开发
      */
     @Test
     public void test2() {

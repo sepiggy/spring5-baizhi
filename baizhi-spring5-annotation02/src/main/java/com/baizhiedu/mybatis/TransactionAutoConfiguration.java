@@ -12,6 +12,7 @@ import javax.sql.DataSource;
 @EnableTransactionManagement
 public class TransactionAutoConfiguration {
 
+    // 跨配置注入
     @Autowired
     private DataSource dataSource;
 
