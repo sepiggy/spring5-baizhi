@@ -1,9 +1,10 @@
 package com.baizhiedu.basic;
 
 public class UserServiceImpl implements UserService {
-    //private UserDAO userDAO = new UserDAOImpl();
 
-    private UserDAO userDAO;
+    private UserDAO userDAO = new UserDAOImpl();
+
+//    private UserDAO userDAO;
 
     public UserDAO getUserDAO() {
         return userDAO;

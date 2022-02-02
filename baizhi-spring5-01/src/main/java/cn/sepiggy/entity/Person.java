@@ -1,6 +1,7 @@
 package cn.sepiggy.entity;
 
 public class Person {
+
     private Integer id;
     private String name;
 

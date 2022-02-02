@@ -5,12 +5,12 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 /*
-     // 实例工厂
-     ConnectionFactory cf = new ConnectionFactory();
-     cf.getConnection();
+// 实例工厂
+ConnectionFactory cf = new ConnectionFactory();
+cf.getConnection();
 
-     // 静态工厂
-     staticConnectionFactory.getConnection();
+// 静态工厂
+staticConnectionFactory.getConnection();
  */
 
 public class StaticConnectionFactory {
@@ -25,10 +25,6 @@ public class StaticConnectionFactory {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
-
         return conn;
-
     }
-
 }

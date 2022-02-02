@@ -1,6 +1,7 @@
 package com.baizhiedu.beanpost;
 
 public class Categroy {
+
     private Integer id;
     private String name;
 

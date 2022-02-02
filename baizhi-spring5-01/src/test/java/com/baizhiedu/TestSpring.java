@@ -1,9 +1,6 @@
 package com.baizhiedu;
 
-import com.baizhiedu.basic.BeanFactory;
-import com.baizhiedu.basic.Person;
-import com.baizhiedu.basic.User;
-import com.baizhiedu.basic.UserService;
+import com.baizhiedu.basic.*;
 import com.baizhiedu.basic.constructer.Customer;
 import com.baizhiedu.beanpost.Categroy;
 import com.baizhiedu.factorybean.ConnectionFactoryBean;
@@ -22,27 +19,18 @@ import java.util.Set;
 public class TestSpring {
 
     /**
-     * 用于测试:工厂类进行解耦合的操作
+     * 用于测试: 工厂类进行解耦合的操作
      */
     @Test
     public void test1() {
-        //UserServiceImplNew
-
-        //UserServcice userService = new UserServiceImplNew()
+//        UserService userService = new UserServiceImplNew();
 //        UserService userService = new UserServiceImpl();
-
         UserService userService = (UserService) BeanFactory.getBean("userService");
-
         userService.login("name", "suns");
-
         User user = new User("suns", "123456");
         userService.register(user);
-
     }
 
-    /**
-     * 用于测试:
-     */
     @Test
     public void test2() {
         Person person = (Person) BeanFactory.getBean("person");
@@ -50,20 +38,19 @@ public class TestSpring {
     }
 
     /**
-     * 用于测试:用于测试Spring的第一个程序
+     * 用于测试: Spring的第一个程序
      */
     @Test
     public void test3() {
-        //1 获得Spring的工厂
+        // 1 获得Spring的工厂
         ApplicationContext ctx = new ClassPathXmlApplicationContext("/applicationContext.xml");
-        //2 通过工厂类 获得 对象
+        // 2 通过工厂类获得对象
         Person person = (Person) ctx.getBean("person");
-
         System.out.println("person = " + person);
     }
 
     /**
-     * 用于测试:Spring工厂提供的其他方法
+     * 用于测试: Spring工厂提供的其他方法
      * getBean
      * getBeanDefinitionNames
      * getBeanNamesForType
@@ -72,55 +59,49 @@ public class TestSpring {
     public void test4() {
         // 创建非web环境的工厂
         ApplicationContext ctx = new ClassPathXmlApplicationContext("/applicationContext.xml");
-/*
-        Person person = ctx.getBean("person", Person.class);
-        System.out.println("person = " + person);
-*/
 
-        //当前Spring的配置文件中 只能有一个<bean class是Person类型
-        /*Person person = ctx.getBean(Person.class);
-          System.out.println("person = " + person);
-        */
+//        Person person = ctx.getBean("person", Person.class);
+//        System.out.println("person = " + person);
 
-        //获取的是 Spring工厂配置文件中所有bean标签的id值  person person1
-        /*String[] beanDefinitionNames = ctx.getBeanDefinitionNames();
-        for (String beanDefinitionName : beanDefinitionNames) {
-            System.out.println("beanDefinitionName = " + beanDefinitionName);
-        }
-        */
+        // 当前 Spring 的配置文件中 只能有一个<bean class是Person类型
+//        Person person = ctx.getBean(Person.class);
+//        System.out.println("person = " + person);
 
-        //根据类型获得Spring配置文件中对应的id值
-        /*String[] beanNamesForType = ctx.getBeanNamesForType(Person.class);
+        // 获取的是 Spring 工厂配置文件中所有bean标签的id值  person person1
+//        String[] beanDefinitionNames = ctx.getBeanDefinitionNames();
+//        for (String beanDefinitionName : beanDefinitionNames) {
+//            System.out.println("beanDefinitionName = " + beanDefinitionName);
+//        }
+
+        // 根据类型获得 Spring 配置文件中对应的 id 值
+        String[] beanNamesForType = ctx.getBeanNamesForType(Person.class);
         for (String id : beanNamesForType) {
             System.out.println("id = " + id);
         }
-        */
 
-        //用于判断是否存在指定id值的bean,不能判断name值
+        // 用于判断是否存在指定id值的bean,不能判断name值
         if (ctx.containsBeanDefinition("person")) {
             System.out.println("true = " + true);
         } else {
             System.out.println("false = " + false);
         }
 
-        //用于判断是否存在指定id值的bean,也可以判断name值
+        // 用于判断是否存在指定id值的bean,也可以判断name值
         if (ctx.containsBean("p")) {
             System.out.println("true = " + true);
         } else {
             System.out.println("false = " + false);
         }
-
     }
 
     /**
-     * 用于测试:spring的配置文件
+     * 用于测试: spring的配置文件
      */
     @Test
     public void test5() {
         ApplicationContext ctx = new ClassPathXmlApplicationContext("/applicationContext.xml");
-       /*Person person = ctx.getBean(Person.class);
-       System.out.println("person = " + person);
-       */
+//        Person person = ctx.getBean(Person.class);
+//        System.out.println("person = " + person);
 
         String[] beanDefinitionNames = ctx.getBeanDefinitionNames();
         for (String beanDefinitionName : beanDefinitionNames) {
@@ -129,7 +110,7 @@ public class TestSpring {
     }
 
     /**
-     * 用于测试:用于测试name属性
+     * 用于测试: name属性
      */
     @Test
     public void test6() {
@@ -139,22 +120,21 @@ public class TestSpring {
     }
 
     /**
-     * 用于测试:用于测试注入
+     * 用于测试: 注入
      */
     @Test
     public void test7() {
         ApplicationContext ctx = new ClassPathXmlApplicationContext("/applicationContext.xml");
         Person person = (Person) ctx.getBean("person");
 
-       /*person.setId(1);
-       person.setName("suns");*/
+//        person.setId(1);
+//        person.setName("suns");
 
         System.out.println("person = " + person);
-
     }
 
     /**
-     * 用于测试:通过spring的配置文件进行赋值（注入）
+     * 用于测试: 通过spring的配置文件进行赋值（注入）
      */
     @Test
     public void test8() {
@@ -165,7 +145,7 @@ public class TestSpring {
     }
 
     /**
-     * 用于测试:JDK类型成员变量的赋值
+     * 用于测试: JDK类型成员变量的赋值
      */
     @Test
     public void test9() {
@@ -199,7 +179,7 @@ public class TestSpring {
     }
 
     /**
-     * 用于测试:用户自定义类型成员变量的赋值
+     * 用于测试: 用户自定义类型成员变量的赋值
      */
     @Test
     public void test10() {
@@ -211,7 +191,7 @@ public class TestSpring {
     }
 
     /**
-     * 用于测试:用于测试构造注入
+     * 用于测试: 构造注入
      */
     @Test
     public void test11() {
@@ -223,31 +203,29 @@ public class TestSpring {
     }
 
     /**
-     * 用于测试:用于测试FactoryBean接口
+     * 用于测试: 通过 FactoryBean 接口创建复杂对象
      */
     @Test
     public void test12() {
         ApplicationContext ctx = new ClassPathXmlApplicationContext("/applicationContext.xml");
         Connection conn = (Connection) ctx.getBean("conn");
         Connection conn2 = (Connection) ctx.getBean("conn");
-
         System.out.println("conn = " + conn);
         System.out.println("conn = " + conn2);
     }
 
     /**
-     * 用于测试:用于测试FactoryBean接口
+     * 用于测试: 拿到 FactoryBean 接口实现类本身
      */
     @Test
     public void test13() {
         ApplicationContext ctx = new ClassPathXmlApplicationContext("/applicationContext.xml");
         ConnectionFactoryBean conn = (ConnectionFactoryBean) ctx.getBean("&conn");
-
         System.out.println("conn = " + conn);
     }
 
     /**
-     * 用于测试:用于测试实例工厂
+     * 用于测试: 通过实例工厂创建复杂对象
      */
     @Test
     public void test14() {

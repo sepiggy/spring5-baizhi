@@ -32,7 +32,7 @@ public class Product implements InitializingBean, DisposableBean {
         System.out.println("Product.myInit");
     }
 
-    //销毁方法：销毁操作（资源释放的操作 ）
+    // 销毁方法：销毁操作（资源释放的操作 ）
     @Override
     public void destroy() throws Exception {
         System.out.println("Product.destroy");

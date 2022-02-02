@@ -7,7 +7,9 @@ import java.util.Set;
 
 // new Person() 通过工厂
 public class Person {
+
     private Integer id;
+
     private String name;
 
     private String[] emails;
